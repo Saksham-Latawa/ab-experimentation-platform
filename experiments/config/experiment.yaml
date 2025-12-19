@@ -1,0 +1,34 @@
+experiment:
+  name: "Ad Creative Experiment v1"
+  description: "Testing new creative against control"
+
+data:
+  control_path: "data/raw/control_group.csv"
+  test_path: "data/raw/test_group.csv"
+
+metrics:
+  continuous:
+    - Conversion_Rate
+    - CTR
+    - CPA
+    - ROAS
+
+  binary:
+    conversion_column: "Purchases"
+
+statistics:
+  alpha: 0.05
+  power_target: 0.80
+
+bayesian:
+  enabled: false
+  draws: 4000
+  tune: 2000
+  decision_threshold: 0.90
+
+cuped:
+  enabled: false
+  pre_metric_column: "Pre_Conversion_Rate"
+
+reporting:
+  output_pdf: "reports/ab_test_report.pdf"
